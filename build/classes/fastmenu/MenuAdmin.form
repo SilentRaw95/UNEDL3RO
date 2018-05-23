@@ -82,16 +82,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Platillos"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PlatillosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Bebidas">
       <Properties>
         <Property name="text" type="java.lang.String" value="Bebidas"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BebidasActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Postres">
       <Properties>
         <Property name="text" type="java.lang.String" value="Postres"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PostresActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Chefs">
       <Properties>

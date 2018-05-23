@@ -5,6 +5,8 @@
  */
 package fastmenu;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author maike
@@ -41,10 +43,25 @@ public class MenuAdmin extends javax.swing.JFrame {
         Salir.setText("SALIR");
 
         Platillos.setText("Platillos");
+        Platillos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PlatillosActionPerformed(evt);
+            }
+        });
 
         Bebidas.setText("Bebidas");
+        Bebidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BebidasActionPerformed(evt);
+            }
+        });
 
         Postres.setText("Postres");
+        Postres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PostresActionPerformed(evt);
+            }
+        });
 
         Chefs.setText("Chefs");
         Chefs.addActionListener(new java.awt.event.ActionListener() {
@@ -97,10 +114,39 @@ public class MenuAdmin extends javax.swing.JFrame {
 
     private void ChefsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChefsActionPerformed
         // TODO add your handling code here:
-        AdminChefs abrir = new AdminChefs();
-        abrir.setVisible(true);
-        this.setVisible(false);
+        JFrame frame = new JFrame();
+        frame.setContentPane(new AdminChefs());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
     }//GEN-LAST:event_ChefsActionPerformed
+
+    private void PlatillosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PlatillosActionPerformed
+        // TODO add your handling code here:
+        JFrame frame = new JFrame();
+        frame.setContentPane(new AdminPlatillos());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }//GEN-LAST:event_PlatillosActionPerformed
+
+    private void PostresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PostresActionPerformed
+        // TODO add your handling code here:
+        JFrame frame = new JFrame();
+        frame.setContentPane(new AdminPostres());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }//GEN-LAST:event_PostresActionPerformed
+
+    private void BebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BebidasActionPerformed
+        // TODO add your handling code here:
+        JFrame frame = new JFrame();
+        frame.setContentPane(new AdminBebidas());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }//GEN-LAST:event_BebidasActionPerformed
 
     /**
      * @param args the command line arguments
