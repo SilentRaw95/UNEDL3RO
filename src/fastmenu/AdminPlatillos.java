@@ -37,13 +37,15 @@ public class AdminPlatillos extends JPanel {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         entityManager = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("FastMenuPU").createEntityManager();
-        query = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT p FROM Platillos p");
+        query = java.beans.Beans.isDesignTime() ? null : entityManager.createQuery("SELECT m FROM Menu m");
         list = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(query.getResultList());
         masterScrollPane = new javax.swing.JScrollPane();
         masterTable = new javax.swing.JTable();
-        platilloLabel = new javax.swing.JLabel();
+        tipoLabel = new javax.swing.JLabel();
+        nombreLabel = new javax.swing.JLabel();
         precioLabel = new javax.swing.JLabel();
-        platilloField = new javax.swing.JTextField();
+        tipoField = new javax.swing.JTextField();
+        nombreField = new javax.swing.JTextField();
         precioField = new javax.swing.JTextField();
         saveButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
@@ -53,8 +55,11 @@ public class AdminPlatillos extends JPanel {
         FormListener formListener = new FormListener();
 
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, list, masterTable);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${platillo}"));
-        columnBinding.setColumnName("Platillo");
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${tipo}"));
+        columnBinding.setColumnName("Tipo");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nombre}"));
+        columnBinding.setColumnName("Nombre");
         columnBinding.setColumnClass(String.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${precio}"));
         columnBinding.setColumnName("Precio");
@@ -63,14 +68,22 @@ public class AdminPlatillos extends JPanel {
 
         masterScrollPane.setViewportView(masterTable);
 
-        platilloLabel.setText("Platillo:");
+        tipoLabel.setText("Tipo:");
+
+        nombreLabel.setText("Nombre:");
 
         precioLabel.setText("Precio:");
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.platillo}"), platilloField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.tipo}"), tipoField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         binding.setSourceUnreadableValue("null");
         bindingGroup.addBinding(binding);
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), platilloField, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), tipoField, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.nombre}"), nombreField, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        binding.setSourceUnreadableValue("null");
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), nombreField, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.precio}"), precioField, org.jdesktop.beansbinding.BeanProperty.create("text"));
@@ -114,13 +127,15 @@ public class AdminPlatillos extends JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(platilloLabel)
+                                    .addComponent(tipoLabel)
+                                    .addComponent(nombreLabel)
                                     .addComponent(precioLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(platilloField, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
-                                    .addComponent(precioField, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)))
-                            .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE))))
+                                    .addComponent(tipoField, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                                    .addComponent(nombreField, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                                    .addComponent(precioField, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)))
+                            .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -130,11 +145,15 @@ public class AdminPlatillos extends JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(platilloLabel)
-                    .addComponent(platilloField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tipoLabel)
+                    .addComponent(tipoField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombreLabel)
+                    .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(precioLabel)
@@ -186,19 +205,19 @@ public class AdminPlatillos extends JPanel {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         int[] selected = masterTable.getSelectedRows();
-        List<fastmenu.Platillos> toRemove = new ArrayList<fastmenu.Platillos>(selected.length);
+        List<fastmenu.Menu> toRemove = new ArrayList<fastmenu.Menu>(selected.length);
         for (int idx = 0; idx < selected.length; idx++) {
-            fastmenu.Platillos p = list.get(masterTable.convertRowIndexToModel(selected[idx]));
-            toRemove.add(p);
-            entityManager.remove(p);
+            fastmenu.Menu m = list.get(masterTable.convertRowIndexToModel(selected[idx]));
+            toRemove.add(m);
+            entityManager.remove(m);
         }
         list.removeAll(toRemove);
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
-        fastmenu.Platillos p = new fastmenu.Platillos();
-        entityManager.persist(p);
-        list.add(p);
+        fastmenu.Menu m = new fastmenu.Menu();
+        entityManager.persist(m);
+        list.add(m);
         int row = list.size() - 1;
         masterTable.setRowSelectionInterval(row, row);
         masterTable.scrollRectToVisible(masterTable.getCellRect(row, 0, true));
@@ -211,9 +230,9 @@ public class AdminPlatillos extends JPanel {
         } catch (RollbackException rex) {
             rex.printStackTrace();
             entityManager.getTransaction().begin();
-            List<fastmenu.Platillos> merged = new ArrayList<fastmenu.Platillos>(list.size());
-            for (fastmenu.Platillos p : list) {
-                merged.add(entityManager.merge(p));
+            List<fastmenu.Menu> merged = new ArrayList<fastmenu.Menu>(list.size());
+            for (fastmenu.Menu m : list) {
+                merged.add(entityManager.merge(m));
             }
             list.clear();
             list.addAll(merged);
@@ -224,17 +243,19 @@ public class AdminPlatillos extends JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteButton;
     private javax.persistence.EntityManager entityManager;
-    private java.util.List<fastmenu.Platillos> list;
+    private java.util.List<fastmenu.Menu> list;
     private javax.swing.JScrollPane masterScrollPane;
     private javax.swing.JTable masterTable;
     private javax.swing.JButton newButton;
-    private javax.swing.JTextField platilloField;
-    private javax.swing.JLabel platilloLabel;
+    private javax.swing.JTextField nombreField;
+    private javax.swing.JLabel nombreLabel;
     private javax.swing.JTextField precioField;
     private javax.swing.JLabel precioLabel;
     private javax.persistence.Query query;
     private javax.swing.JButton refreshButton;
     private javax.swing.JButton saveButton;
+    private javax.swing.JTextField tipoField;
+    private javax.swing.JLabel tipoLabel;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
     public static void main(String[] args) {

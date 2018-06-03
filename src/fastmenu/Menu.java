@@ -24,13 +24,14 @@ import javax.persistence.Transient;
  * @author maike
  */
 @Entity
-@Table(name = "postres", catalog = "fastmenu", schema = "")
+@Table(name = "menu", catalog = "fastmenu", schema = "")
 @NamedQueries({
-    @NamedQuery(name = "Postres.findAll", query = "SELECT p FROM Postres p")
-    , @NamedQuery(name = "Postres.findById", query = "SELECT p FROM Postres p WHERE p.id = :id")
-    , @NamedQuery(name = "Postres.findByPostre", query = "SELECT p FROM Postres p WHERE p.postre = :postre")
-    , @NamedQuery(name = "Postres.findByPrecio", query = "SELECT p FROM Postres p WHERE p.precio = :precio")})
-public class Postres implements Serializable {
+    @NamedQuery(name = "Menu.findAll", query = "SELECT m FROM Menu m")
+    , @NamedQuery(name = "Menu.findById", query = "SELECT m FROM Menu m WHERE m.id = :id")
+    , @NamedQuery(name = "Menu.findByTipo", query = "SELECT m FROM Menu m WHERE m.tipo = :tipo")
+    , @NamedQuery(name = "Menu.findByNombre", query = "SELECT m FROM Menu m WHERE m.nombre = :nombre")
+    , @NamedQuery(name = "Menu.findByPrecio", query = "SELECT m FROM Menu m WHERE m.precio = :precio")})
+public class Menu implements Serializable {
 
     @Transient
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
@@ -42,22 +43,26 @@ public class Postres implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "postre")
-    private String postre;
+    @Column(name = "tipo")
+    private String tipo;
+    @Basic(optional = false)
+    @Column(name = "nombre")
+    private String nombre;
     @Basic(optional = false)
     @Column(name = "precio")
     private int precio;
 
-    public Postres() {
+    public Menu() {
     }
 
-    public Postres(Integer id) {
+    public Menu(Integer id) {
         this.id = id;
     }
 
-    public Postres(Integer id, String postre, int precio) {
+    public Menu(Integer id, String tipo, String nombre, int precio) {
         this.id = id;
-        this.postre = postre;
+        this.tipo = tipo;
+        this.nombre = nombre;
         this.precio = precio;
     }
 
@@ -71,14 +76,24 @@ public class Postres implements Serializable {
         changeSupport.firePropertyChange("id", oldId, id);
     }
 
-    public String getPostre() {
-        return postre;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setPostre(String postre) {
-        String oldPostre = this.postre;
-        this.postre = postre;
-        changeSupport.firePropertyChange("postre", oldPostre, postre);
+    public void setTipo(String tipo) {
+        String oldTipo = this.tipo;
+        this.tipo = tipo;
+        changeSupport.firePropertyChange("tipo", oldTipo, tipo);
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        String oldNombre = this.nombre;
+        this.nombre = nombre;
+        changeSupport.firePropertyChange("nombre", oldNombre, nombre);
     }
 
     public int getPrecio() {
@@ -101,10 +116,10 @@ public class Postres implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Postres)) {
+        if (!(object instanceof Menu)) {
             return false;
         }
-        Postres other = (Postres) object;
+        Menu other = (Menu) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -113,7 +128,7 @@ public class Postres implements Serializable {
 
     @Override
     public String toString() {
-        return "fastmenu.Postres[ id=" + id + " ]";
+        return "fastmenu.Menu[ id=" + id + " ]";
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

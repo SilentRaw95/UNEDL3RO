@@ -14,12 +14,12 @@ public class NewJPanelPlatillo extends javax.swing.JPanel {
     /**
      * Creates new form NewJPanelPlatillo
      */
-    public Platillos platillo;
-    public NewJPanelPlatillo(Platillos p) {
+    public Menu platillo;
+    public NewJPanelPlatillo(Menu p) {
         this.platillo=p;
         initComponents();
         this.jLabel1.setText(""+p.getPrecio());
-        this.jLabel2.setText(p.getPlatillo());
+        this.jLabel2.setText(p.getNombre());
         setVisible(true);
     }
 

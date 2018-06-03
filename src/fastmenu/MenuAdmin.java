@@ -32,8 +32,6 @@ public class MenuAdmin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Salir = new javax.swing.JButton();
         Platillos = new javax.swing.JButton();
-        Bebidas = new javax.swing.JButton();
-        Postres = new javax.swing.JButton();
         Chefs = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,20 +44,6 @@ public class MenuAdmin extends javax.swing.JFrame {
         Platillos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PlatillosActionPerformed(evt);
-            }
-        });
-
-        Bebidas.setText("Bebidas");
-        Bebidas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BebidasActionPerformed(evt);
-            }
-        });
-
-        Postres.setText("Postres");
-        Postres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PostresActionPerformed(evt);
             }
         });
 
@@ -85,11 +69,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(Platillos)
-                        .addGap(18, 18, 18)
-                        .addComponent(Bebidas)
-                        .addGap(18, 18, 18)
-                        .addComponent(Postres)
-                        .addGap(18, 18, 18)
+                        .addGap(192, 192, 192)
                         .addComponent(Chefs)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
@@ -101,8 +81,6 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Platillos)
-                    .addComponent(Bebidas)
-                    .addComponent(Postres)
                     .addComponent(Chefs))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addComponent(Salir)
@@ -129,24 +107,6 @@ public class MenuAdmin extends javax.swing.JFrame {
         frame.pack();
         frame.setVisible(true);
     }//GEN-LAST:event_PlatillosActionPerformed
-
-    private void PostresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PostresActionPerformed
-        // TODO add your handling code here:
-        JFrame frame = new JFrame();
-        frame.setContentPane(new AdminPostres());
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }//GEN-LAST:event_PostresActionPerformed
-
-    private void BebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BebidasActionPerformed
-        // TODO add your handling code here:
-        JFrame frame = new JFrame();
-        frame.setContentPane(new AdminBebidas());
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }//GEN-LAST:event_BebidasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,10 +144,8 @@ public class MenuAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Bebidas;
     private javax.swing.JButton Chefs;
     private javax.swing.JButton Platillos;
-    private javax.swing.JButton Postres;
     private javax.swing.JButton Salir;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
