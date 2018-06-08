@@ -5,6 +5,12 @@
  */
 package fastmenu;
 
+import claseConectar.conectar;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author maike
@@ -53,6 +59,11 @@ public class ClienteOrder extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Ordenar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Salir");
 
@@ -191,6 +202,21 @@ public class ClienteOrder extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String DatoCapturado = "";
+        String sql = "SELECT * FROM menu";
+        Statement st;
+        ResultSet datos=null;
+        try{
+            st=cn.createStatement();
+            datos=st.executeQuery(sql);
+            while (datos.next()) {
+                System.out.println(datos.getString("tipo") +" "+ datos.getString("nombre"));
+            }
+        }catch(Exception e){ System.out.print(e.toString());}
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -250,4 +276,6 @@ public class ClienteOrder extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+    conectar mysql = new conectar();
+    Connection cn = mysql.conexion();
 }
