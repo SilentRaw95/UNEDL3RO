@@ -5,11 +5,20 @@
  */
 package fastmenu;
 
+import claseConectar.conectar;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 /**
  *
  * @author maike
  */
 public class MenuCliente extends javax.swing.JFrame {
+    
+    static ArrayList<NewJPanelPlatillo> platillos=new ArrayList();
+    NewJPanelPlatillo platilloVisual;
 
     /**
      * Creates new form MenuCliente
@@ -44,6 +53,11 @@ public class MenuCliente extends javax.swing.JFrame {
 
         goBebidas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         goBebidas.setText("Bebida");
+        goBebidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goBebidasActionPerformed(evt);
+            }
+        });
 
         goPlatillos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         goPlatillos.setText("Platillos");
@@ -124,6 +138,12 @@ public class MenuCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void goBebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBebidasActionPerformed
+        // TODO add your handling code here:
+        ClientesBebidas abrir = new ClientesBebidas();
+        abrir.setVisible(true);
+    }//GEN-LAST:event_goBebidasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -155,6 +175,30 @@ public class MenuCliente extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuCliente().setVisible(true);
+                
+                //obtener platillos
+                conectar mysql = new conectar();
+                Connection cn = mysql.conexion();
+                String DatoCapturado = "";
+                String sql = "SELECT * FROM menu";
+                Statement st;
+                ResultSet datos=null;
+                try{
+                    st=cn.createStatement();
+                    datos=st.executeQuery(sql);
+                    while (datos.next()) {
+                        switch(datos.getString("tipo")){
+                            case "Platillo":
+                            break;
+                            case "Bebida":
+                            break;
+                            case "Postre":
+                            break;
+                            default:
+                                System.out.println("BLYAT");
+                        }
+                    }
+                }catch(Exception e){ System.out.print(e.toString());}
             }
         });
     }

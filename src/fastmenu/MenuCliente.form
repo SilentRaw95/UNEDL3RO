@@ -96,6 +96,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Bebida"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="goBebidasActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="goPlatillos">
       <Properties>
