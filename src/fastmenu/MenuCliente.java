@@ -16,10 +16,6 @@ import java.util.ArrayList;
  * @author maike
  */
 public class MenuCliente extends javax.swing.JFrame {
-    
-    static ArrayList<NewJPanelPlatillo> platillos=new ArrayList();
-    NewJPanelPlatillo platilloVisual;
-
     /**
      * Creates new form MenuCliente
      */
@@ -82,6 +78,11 @@ public class MenuCliente extends javax.swing.JFrame {
 
         cancel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cancel.setText("Cancelar");
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
 
         order.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         order.setText("Ordenar");
@@ -144,6 +145,10 @@ public class MenuCliente extends javax.swing.JFrame {
         abrir.setVisible(true);
     }//GEN-LAST:event_goBebidasActionPerformed
 
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -175,30 +180,6 @@ public class MenuCliente extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuCliente().setVisible(true);
-                
-                //obtener platillos
-                conectar mysql = new conectar();
-                Connection cn = mysql.conexion();
-                String DatoCapturado = "";
-                String sql = "SELECT * FROM menu";
-                Statement st;
-                ResultSet datos=null;
-                try{
-                    st=cn.createStatement();
-                    datos=st.executeQuery(sql);
-                    while (datos.next()) {
-                        switch(datos.getString("tipo")){
-                            case "Platillo":
-                            break;
-                            case "Bebida":
-                            break;
-                            case "Postre":
-                            break;
-                            default:
-                                System.out.println("BLYAT");
-                        }
-                    }
-                }catch(Exception e){ System.out.print(e.toString());}
             }
         });
     }

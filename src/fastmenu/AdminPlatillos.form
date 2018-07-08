@@ -74,12 +74,12 @@
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tipoField" alignment="0" pref="471" max="32767" attributes="0"/>
-                                  <Component id="nombreField" alignment="0" pref="471" max="32767" attributes="0"/>
-                                  <Component id="precioField" alignment="0" pref="471" max="32767" attributes="0"/>
+                                  <Component id="tipoField" alignment="0" pref="518" max="32767" attributes="0"/>
+                                  <Component id="nombreField" alignment="0" pref="518" max="32767" attributes="0"/>
+                                  <Component id="precioField" alignment="0" pref="518" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="masterScrollPane" pref="516" max="32767" attributes="0"/>
+                          <Component id="masterScrollPane" pref="563" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -91,7 +91,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="masterScrollPane" pref="223" max="32767" attributes="0"/>
+              <Component id="masterScrollPane" pref="200" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="tipoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -166,7 +166,7 @@
               </Subbinding>
               <Subbinding sourcePath="${precio}">
                 <BindingParameter name="NAME" value="Precio"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Integer.class"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.EDITABLE" value="false"/>
               </Subbinding>
             </BindingProperty>
@@ -194,6 +194,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tipoField">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <BindingProperties>
         <BindingProperty name="text" source="masterTable" sourcePath="${selectedElement.tipo}" target="tipoField" targetPath="text" updateStrategy="0" immediately="false">
           <Property name="incompletePathValue" type="java.lang.String" value="null"/>
@@ -246,7 +249,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="newButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Guardar"/>
+        <Property name="text" type="java.lang.String" value="Nuevo"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newButtonActionPerformed"/>

@@ -50,7 +50,7 @@ public class Menu implements Serializable {
     private String nombre;
     @Basic(optional = false)
     @Column(name = "precio")
-    private int precio;
+    private double precio;
 
     public Menu() {
     }
@@ -59,7 +59,7 @@ public class Menu implements Serializable {
         this.id = id;
     }
 
-    public Menu(Integer id, String tipo, String nombre, int precio) {
+    public Menu(Integer id, String tipo, String nombre, double precio) {
         this.id = id;
         this.tipo = tipo;
         this.nombre = nombre;
@@ -96,12 +96,12 @@ public class Menu implements Serializable {
         changeSupport.firePropertyChange("nombre", oldNombre, nombre);
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
-        int oldPrecio = this.precio;
+    public void setPrecio(double precio) {
+        double oldPrecio = this.precio;
         this.precio = precio;
         changeSupport.firePropertyChange("precio", oldPrecio, precio);
     }
