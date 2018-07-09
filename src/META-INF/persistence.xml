@@ -7,6 +7,7 @@
     <class>fastmenu.Bebidas</class>
     <class>fastmenu.Postres</class>
     <class>fastmenu.Menu</class>
+    <class>fastmenu.Pedidoslista</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/fastmenu?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

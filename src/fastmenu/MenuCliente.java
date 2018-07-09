@@ -10,17 +10,32 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 /**
  *
  * @author maike
  */
 public class MenuCliente extends javax.swing.JFrame {
+    
+    public static ArrayList<Pedidoslista> orden = new ArrayList<Pedidoslista>();
+    public static DefaultListModel listModel = new DefaultListModel();
+    
     /**
      * Creates new form MenuCliente
      */
     public MenuCliente() {
         initComponents();
+        lista_pedidos.setModel(listModel);
+    }
+    
+    public static void ADDlista_pedidos(String element){
+        listModel.addElement(element);
+    }
+    
+    public static void editList(int pos, int cantidad, double precio){
+        System.out.println("UPDATE");
+        listModel.set(0,"id: "+orden.get(pos).getId()+" "+orden.get(pos).getNombre()+" cantidad: "+cantidad+" precio total: "+precio);
     }
 
     /**
@@ -36,11 +51,13 @@ public class MenuCliente extends javax.swing.JFrame {
         goBebidas = new javax.swing.JButton();
         goPlatillos = new javax.swing.JButton();
         goPostres = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         description = new javax.swing.JTextArea();
         cancel = new javax.swing.JButton();
         order = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lista_pedidos = new javax.swing.JList<>();
+        delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,17 +78,6 @@ public class MenuCliente extends javax.swing.JFrame {
         goPostres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         goPostres.setText("Postres");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 118, Short.MAX_VALUE)
-        );
-
         description.setColumns(20);
         description.setRows(5);
         jScrollPane1.setViewportView(description);
@@ -87,6 +93,12 @@ public class MenuCliente extends javax.swing.JFrame {
         order.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         order.setText("Ordenar");
 
+        lista_pedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane2.setViewportView(lista_pedidos);
+
+        delete.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        delete.setText("Borrar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,12 +113,14 @@ public class MenuCliente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cancel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(delete)
+                        .addGap(105, 105, 105)
                         .addComponent(order)
                         .addGap(56, 56, 56))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(goBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
@@ -125,14 +139,15 @@ public class MenuCliente extends javax.swing.JFrame {
                     .addComponent(goBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(goPlatillos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(goPostres, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancel)
-                    .addComponent(order))
+                    .addComponent(order)
+                    .addComponent(delete))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -186,13 +201,15 @@ public class MenuCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancel;
+    private javax.swing.JButton delete;
     private javax.swing.JTextArea description;
     private javax.swing.JButton goBebidas;
     private javax.swing.JButton goPlatillos;
     private javax.swing.JButton goPostres;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    static javax.swing.JList<String> lista_pedidos;
     private javax.swing.JButton order;
     // End of variables declaration//GEN-END:variables
 }
