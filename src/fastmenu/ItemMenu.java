@@ -93,24 +93,22 @@ public class ItemMenu extends javax.swing.JPanel {
         String despacito = cantidad.getText();
         int precio = Integer.parseInt(despacito);
         if(precio < 1){
-            JOptionPane.showMessageDialog(null, "No puedes colocar cantidad negativa");
+            JOptionPane.showMessageDialog(null, "No puedes colocar cantidad negativa o 0");
         } else {
-            int posicion;
             //primer valor es temporal
             Pedidoslista temp = new Pedidoslista(platillo.getId(), 0, platillo.getId(), null, null, 0, 0);
             //System.out.println(variables.orden.contains(temp));
             
             if (variables.orden.contains(temp)) {
                 //en caso de añadir un producto repetido
-                posicion = variables.orden.indexOf(temp);
-                int newCant = variables.orden.get(posicion).getCantidad()+Integer.parseInt(cantidad.getText());
-                variables.orden.get(posicion).setCantidad(newCant);
-                variables.orden.get(posicion).setTotal(newCant*platillo.getPrecio());
-                variables.editList(posicion, variables.orden.get(posicion).getCantidad(), variables.orden.get(posicion).getTotal());
+                int posicion = variables.orden.indexOf(temp);
+                variables.removeList(posicion);
+                variables.orden.add(new Pedidoslista(platillo.getId(), 0, platillo.getId(), platillo.getTipo(), platillo.getNombre(), Integer.parseInt(cantidad.getText()), platillo.getPrecio()*Integer.parseInt(cantidad.getText()) ));
+                variables.ADDlista_pedidos("id: "+platillo.getId()+" "+platillo.getNombre()+" cantidad: "+cantidad.getText()+" precio total: "+platillo.getPrecio()*Integer.parseInt(cantidad.getText()) );
                 cantidad.setText("");
             } else {
                 //en caso de que sea algo nnuevo
-                variables.orden.add(new Pedidoslista(0, 0, platillo.getId(), platillo.getTipo(), platillo.getNombre(), Integer.parseInt(cantidad.getText()), platillo.getPrecio()*Integer.parseInt(cantidad.getText()) ));
+                variables.orden.add(new Pedidoslista(platillo.getId(), 0, platillo.getId(), platillo.getTipo(), platillo.getNombre(), Integer.parseInt(cantidad.getText()), platillo.getPrecio()*Integer.parseInt(cantidad.getText()) ));
                 variables.ADDlista_pedidos("id: "+platillo.getId()+" "+platillo.getNombre()+" cantidad: "+cantidad.getText()+" precio total: "+platillo.getPrecio()*Integer.parseInt(cantidad.getText()) );
                 cantidad.setText("");
             }

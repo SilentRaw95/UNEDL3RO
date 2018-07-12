@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,9 +34,8 @@ public class MenuCliente extends javax.swing.JFrame {
         listModel.addElement(element);
     }
     
-    public static void editList(int pos, int cantidad, double precio){
-        System.out.println("UPDATE");
-        listModel.set(0,"id: "+orden.get(pos).getId()+" "+orden.get(pos).getNombre()+" cantidad: "+cantidad+" precio total: "+precio);
+    public static void removeList(int pos){
+        listModel.removeElementAt(pos);
     }
 
     /**
@@ -92,6 +92,11 @@ public class MenuCliente extends javax.swing.JFrame {
 
         order.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         order.setText("Ordenar");
+        order.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderActionPerformed(evt);
+            }
+        });
 
         lista_pedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(lista_pedidos);
@@ -164,6 +169,20 @@ public class MenuCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelActionPerformed
 
+    private void orderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderActionPerformed
+        // TODO add your handling code here:
+        if(orden.size() != 0){
+            JOptionPane.showMessageDialog(null, "No puedes hacer, orden sin platillos");
+        } else {
+            String sql = "INSERT INTO `pedidoslista` (`id`, `id_pedido`, `id_platillo`, `nombre`, `tipo`, `cantidad`, `total`) VALUES (NULL, '1', '1', 'obo', 'dsadas', '10', '10');";
+            Statement st;
+            try{
+                st=cn.createStatement();
+                st.execute(sql);
+            }catch(Exception e){ System.out.print(e.toString());}
+        }
+    }//GEN-LAST:event_orderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -212,4 +231,6 @@ public class MenuCliente extends javax.swing.JFrame {
     static javax.swing.JList<String> lista_pedidos;
     private javax.swing.JButton order;
     // End of variables declaration//GEN-END:variables
+    conectar mysql = new conectar();
+    Connection cn = mysql.conexion();
 }
