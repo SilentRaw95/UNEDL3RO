@@ -21,6 +21,7 @@ public class MenuCliente extends javax.swing.JFrame {
     
     public static ArrayList<Pedidoslista> orden = new ArrayList<Pedidoslista>();
     public static DefaultListModel listModel = new DefaultListModel();
+    int pedidosEnBd = 0;
     
     /**
      * Creates new form MenuCliente
@@ -28,6 +29,17 @@ public class MenuCliente extends javax.swing.JFrame {
     public MenuCliente() {
         initComponents();
         lista_pedidos.setModel(listModel);
+        String sql = "SELECT * FROM pedidos";
+        Statement st;
+        ResultSet datos=null;
+        try{
+            st=cn.createStatement();
+            datos=st.executeQuery(sql);
+            while (datos.next()) {
+                pedidosEnBd++;
+            }
+        }catch(Exception e){ System.out.print(e.toString());}
+        System.out.println(pedidosEnBd);
     }
     
     public static void ADDlista_pedidos(String element){
@@ -103,6 +115,11 @@ public class MenuCliente extends javax.swing.JFrame {
 
         delete.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         delete.setText("Borrar");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,17 +188,28 @@ public class MenuCliente extends javax.swing.JFrame {
 
     private void orderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderActionPerformed
         // TODO add your handling code here:
-        if(orden.size() != 0){
+        if(orden.size() == 0){
             JOptionPane.showMessageDialog(null, "No puedes hacer, orden sin platillos");
         } else {
-            String sql = "INSERT INTO `pedidoslista` (`id`, `id_pedido`, `id_platillo`, `nombre`, `tipo`, `cantidad`, `total`) VALUES (NULL, '1', '1', 'obo', 'dsadas', '10', '10');";
             Statement st;
+            String desc = description.getText();
+            String ordenPadre = "INSERT INTO `pedidos` (`id`, `descripcion`) VALUES (NULL, '"+desc+"');";
+            //String sql = "INSERT INTO `pedidoslista` (`id`, `id_pedido`, `id_platillo`, `nombre`, `tipo`, `cantidad`, `total`) VALUES (NULL, '1', '1', 'obo', 'dsadas', '10', '10');";
             try{
+                pedidosEnBd++;
                 st=cn.createStatement();
-                st.execute(sql);
+                st.execute(ordenPadre);
+                for (int i = 0; i < orden.size(); i++) {
+                    String sql = "INSERT INTO `pedidoslista` (`id`, `id_pedido`, `id_platillo`, `nombre`, `tipo`, `cantidad`, `total`) VALUES (NULL, '"+pedidosEnBd+"', '"+orden.get(i).getIdPlatillo()+"', '"+orden.get(i).getTipo()+"', '"+orden.get(i).getNombre()+"', '"+orden.get(i).getCantidad()+"', '"+orden.get(i).getTotal()+"');";
+                    st.execute(sql);
+                }
             }catch(Exception e){ System.out.print(e.toString());}
         }
     }//GEN-LAST:event_orderActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteActionPerformed
 
     /**
      * @param args the command line arguments

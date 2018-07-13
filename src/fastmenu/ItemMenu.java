@@ -103,8 +103,10 @@ public class ItemMenu extends javax.swing.JPanel {
                 //en caso de añadir un producto repetido
                 int posicion = variables.orden.indexOf(temp);
                 variables.removeList(posicion);
+                variables.orden.remove(posicion);
                 variables.orden.add(new Pedidoslista(platillo.getId(), 0, platillo.getId(), platillo.getTipo(), platillo.getNombre(), Integer.parseInt(cantidad.getText()), platillo.getPrecio()*Integer.parseInt(cantidad.getText()) ));
                 variables.ADDlista_pedidos("id: "+platillo.getId()+" "+platillo.getNombre()+" cantidad: "+cantidad.getText()+" precio total: "+platillo.getPrecio()*Integer.parseInt(cantidad.getText()) );
+                
                 cantidad.setText("");
             } else {
                 //en caso de que sea algo nnuevo

@@ -28,7 +28,6 @@ public class ClientesBebidas extends javax.swing.JFrame {
         //obtener platillos
         conectar mysql = new conectar();
         Connection cn = mysql.conexion();
-        String DatoCapturado = "";
         String sql = "SELECT * FROM menu";
         Statement st;
         ResultSet datos=null;
