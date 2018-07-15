@@ -21,7 +21,7 @@ public class MenuCliente extends javax.swing.JFrame {
     
     public static ArrayList<Pedidoslista> orden = new ArrayList<Pedidoslista>();
     public static DefaultListModel listModel = new DefaultListModel();
-    int pedidosEnBd = 0;
+    static double xd = 0;
     
     /**
      * Creates new form MenuCliente
@@ -29,17 +29,6 @@ public class MenuCliente extends javax.swing.JFrame {
     public MenuCliente() {
         initComponents();
         lista_pedidos.setModel(listModel);
-        String sql = "SELECT * FROM pedidos";
-        Statement st;
-        ResultSet datos=null;
-        try{
-            st=cn.createStatement();
-            datos=st.executeQuery(sql);
-            while (datos.next()) {
-                pedidosEnBd++;
-            }
-        }catch(Exception e){ System.out.print(e.toString());}
-        System.out.println(pedidosEnBd);
     }
     
     public static void ADDlista_pedidos(String element){
@@ -48,7 +37,7 @@ public class MenuCliente extends javax.swing.JFrame {
         for (int i = 0; i < orden.size(); i++) {
             thot = thot + orden.get(i).getTotal();
         }
-        totalTxt.setText(Double.toString(thot));
+        xd = thot;
     }
     
     public static void removeList(int pos){
@@ -57,7 +46,7 @@ public class MenuCliente extends javax.swing.JFrame {
         for (int i = 0; i < orden.size(); i++) {
             thot = thot + orden.get(i).getTotal();
         }
-        totalTxt.setText(Double.toString(thot));
+        xd = thot;
     }
 
     /**
@@ -84,8 +73,6 @@ public class MenuCliente extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         mesa = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        totalTxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,7 +123,12 @@ public class MenuCliente extends javax.swing.JFrame {
             }
         });
 
-        lista_pedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        lista_pedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        lista_pedidos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                lista_pedidosValueChanged(evt);
+            }
+        });
         jScrollPane2.setViewportView(lista_pedidos);
 
         delete.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -159,12 +151,6 @@ public class MenuCliente extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Comida");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setText("Total:");
-
-        totalTxt.setEditable(false);
-        totalTxt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,9 +158,6 @@ public class MenuCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -188,10 +171,13 @@ public class MenuCliente extends javax.swing.JFrame {
                                 .addComponent(order))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(goBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(94, 94, 94)
-                                .addComponent(goPlatillos, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(goBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(94, 94, 94)
+                                        .addComponent(goPlatillos, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                                 .addComponent(goPostres, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(65, 65, 65))
@@ -200,10 +186,6 @@ public class MenuCliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(totalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
                         .addComponent(jLabel1)
                         .addGap(61, 61, 61))))
         );
@@ -214,9 +196,7 @@ public class MenuCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
-                    .addComponent(mesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(totalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(goBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,6 +260,7 @@ public class MenuCliente extends javax.swing.JFrame {
                 //ingreso
                 String ordenPadre = "INSERT INTO `pedidos` (`id`, `mesa`, `descripcion`) VALUES (NULL, '"+mesa.getSelectedItem()+"', '"+description.getText()+"');";
                 try{
+                    JOptionPane.showMessageDialog(null, "Es un total de: "+xd);
                     st=cn.createStatement();
                     st.execute(ordenPadre);
                     for (int i = 0; i < orden.size(); i++) {
@@ -287,23 +268,25 @@ public class MenuCliente extends javax.swing.JFrame {
                         st.execute(sql);
                     }
                     //limpiar todo
-                    totalTxt.setText("");
                     orden.clear();
                     listModel.removeAllElements();
+                    description.setText("");
                 }catch(Exception e){ System.out.print(e.toString());}
             }
         }
     }//GEN-LAST:event_orderActionPerformed
-
+    
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
-        orden.remove(lista_pedidos.getSelectedIndex());
-        listModel.removeElementAt(lista_pedidos.getSelectedIndex());
-        double thot = 0;
-        for (int i = 0; i < orden.size(); i++) {
-            thot = thot + orden.get(i).getTotal();
+        if(lista_pedidos.getSelectedIndex() != 0){
+            orden.remove(lista_pedidos.getSelectedIndex());
+            listModel.removeElementAt(lista_pedidos.getSelectedIndex());
+            double thot = 0;
+            for (int i = 0; i < orden.size(); i++) {
+                thot = thot + orden.get(i).getTotal();
+            }
+            xd = thot;
         }
-        totalTxt.setText(Double.toString(thot));
     }//GEN-LAST:event_deleteActionPerformed
 
     private void goPlatillosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goPlatillosActionPerformed
@@ -317,6 +300,10 @@ public class MenuCliente extends javax.swing.JFrame {
         ClientesPostre abrir = new ClientesPostre();
         abrir.setVisible(true);
     }//GEN-LAST:event_goPostresActionPerformed
+
+    private void lista_pedidosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lista_pedidosValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lista_pedidosValueChanged
 
     /**
      * @param args the command line arguments
@@ -364,13 +351,11 @@ public class MenuCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     static javax.swing.JList<String> lista_pedidos;
     private javax.swing.JComboBox<String> mesa;
     private javax.swing.JButton order;
-    private static javax.swing.JTextField totalTxt;
     // End of variables declaration//GEN-END:variables
     conectar mysql = new conectar();
     Connection cn = mysql.conexion();

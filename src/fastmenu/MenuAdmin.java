@@ -39,6 +39,11 @@ public class MenuAdmin extends javax.swing.JFrame {
         jLabel1.setText("Admin");
 
         Salir.setText("SALIR");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
 
         Platillos.setText("Platillos");
         Platillos.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +112,13 @@ public class MenuAdmin extends javax.swing.JFrame {
         frame.pack();
         frame.setVisible(true);
     }//GEN-LAST:event_PlatillosActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        // TODO add your handling code here:
+        Inicio abrir = new Inicio();
+        abrir.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_SalirActionPerformed
 
     /**
      * @param args the command line arguments

@@ -206,22 +206,26 @@ public class MenuChef extends javax.swing.JFrame {
 
     private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
         // TODO add your handling code here:
-        orderIndex.removeAllItems();
-        orderIndex.addItem("seleccionar");
-        listModel.removeAllElements();
-        total.setText("");
-        
-        String sql = "DELETE * FROM pedidos WHERE mesa = '"+orderIndex.getSelectedItem()+"'";
-        Statement st;
-        ResultSet datos=null;
-        ResultSet data=null;
-        try{
-            st=cn.createStatement();
-            datos=st.executeQuery(sql);
-            //
-            String mysql = "DELETE * FROM pedidoslista WHERE mesa = '"+orderIndex.getSelectedItem()+"'";
-            data=st.executeQuery(mysql);
-        }catch(Exception e){ System.out.print(e.toString());}
+        if(!orderIndex.getSelectedItem().equals("seleccionar")){
+            String sql = "DELETE FROM pedidos WHERE mesa = "+orderIndex.getSelectedItem();
+            Statement st;
+            try{
+                st=cn.createStatement();
+                st.executeUpdate(sql);
+                //
+                String mysql = "DELETE FROM pedidoslista WHERE id_pedido = "+orderIndex.getSelectedItem();
+                st.executeUpdate(mysql);
+                
+                orderIndex.setSelectedIndex(0);
+                for (int i = 0; i < orderIndex.getItemCount(); i++) {
+                    if(i != 0){
+                        orderIndex.removeItemAt(i);
+                    }
+                }
+                listModel.removeAllElements();
+                total.setText("");
+            }catch(Exception e){ System.out.print(e.toString());}
+        }
     }//GEN-LAST:event_finishActionPerformed
 
     private void fuckGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fuckGoBackActionPerformed
