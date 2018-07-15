@@ -55,6 +55,9 @@ public class MenuChef extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         description = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
+        finish = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        total = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,6 +74,11 @@ public class MenuChef extends javax.swing.JFrame {
 
         fuckGoBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         fuckGoBack.setText("Cerrar");
+        fuckGoBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fuckGoBackActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Mesa:");
@@ -88,6 +96,19 @@ public class MenuChef extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Descripcion");
 
+        finish.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        finish.setText("Terminar Orden");
+        finish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finishActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setText("Total:");
+
+        total.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,38 +123,52 @@ public class MenuChef extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(29, 29, 29)
-                                .addComponent(orderIndex, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(orderIndex, 0, 200, Short.MAX_VALUE)
+                                    .addComponent(total))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(finish, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(fuckGoBack))
+                    .addComponent(fuckGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(orderIndex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(orderIndex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(finish, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addContainerGap())
         );
 
@@ -142,17 +177,59 @@ public class MenuChef extends javax.swing.JFrame {
 
     private void orderIndexItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_orderIndexItemStateChanged
         // TODO add your handling code here:
-        String sql = "SELECT * FROM pedidos WHERE mesa = '"+orderIndex.getSelectedItem()+"'";
+        listModel.removeAllElements();
+        description.setText("");
+        total.setText("");
+        if(!orderIndex.getSelectedItem().equals("seleccionar")){
+            String sql = "SELECT * FROM pedidos WHERE mesa = '"+orderIndex.getSelectedItem()+"'";
+            Statement st;
+            ResultSet datos=null;
+            ResultSet data=null;
+            double totaldata = 0;
+            try{
+                st=cn.createStatement();
+                datos=st.executeQuery(sql);
+                while (datos.next()) {
+                    description.setText(datos.getString("descripcion"));
+                }
+                //añadir platillo
+                String xd = "SELECT * FROM pedidoslista WHERE id_pedido = '"+orderIndex.getSelectedItem()+"'";
+                data=st.executeQuery(xd);
+                while (data.next()) {
+                    listModel.addElement(data.getString("nombre")+" x"+data.getString("cantidad")+" "+data.getString("total")+"$");
+                        totaldata = totaldata + Double.parseDouble(data.getString("total"));
+                }
+                total.setText(Double.toString(totaldata));
+            }catch(Exception e){ System.out.print(e.toString());}
+        }
+    }//GEN-LAST:event_orderIndexItemStateChanged
+
+    private void finishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishActionPerformed
+        // TODO add your handling code here:
+        orderIndex.removeAllItems();
+        orderIndex.addItem("seleccionar");
+        listModel.removeAllElements();
+        total.setText("");
+        
+        String sql = "DELETE * FROM pedidos WHERE mesa = '"+orderIndex.getSelectedItem()+"'";
         Statement st;
         ResultSet datos=null;
+        ResultSet data=null;
         try{
             st=cn.createStatement();
             datos=st.executeQuery(sql);
-            while (datos.next()) {
-                description.setText(datos.getString("descripcion"));
-            }
+            //
+            String mysql = "DELETE * FROM pedidoslista WHERE mesa = '"+orderIndex.getSelectedItem()+"'";
+            data=st.executeQuery(mysql);
         }catch(Exception e){ System.out.print(e.toString());}
-    }//GEN-LAST:event_orderIndexItemStateChanged
+    }//GEN-LAST:event_finishActionPerformed
+
+    private void fuckGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fuckGoBackActionPerformed
+        // TODO add your handling code here:
+        Inicio abrir = new Inicio();
+        abrir.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_fuckGoBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,15 +268,18 @@ public class MenuChef extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea description;
+    private javax.swing.JButton finish;
     private javax.swing.JButton fuckGoBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox<String> orderIndex;
     private javax.swing.JList<String> platillos;
+    private javax.swing.JTextField total;
     // End of variables declaration//GEN-END:variables
     conectar mysql = new conectar();
     Connection cn = mysql.conexion();
