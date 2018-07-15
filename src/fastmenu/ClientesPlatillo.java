@@ -15,13 +15,13 @@ import java.util.ArrayList;
  *
  * @author maike
  */
-public class ClientesBebidas extends javax.swing.JFrame {
+public class ClientesPlatillo extends javax.swing.JFrame {
     
     ItemMenu platilloVisual;
     /**
      * Creates new form ClientesBebidas
      */
-    public ClientesBebidas() {
+    public ClientesPlatillo() {
         initComponents();
         setVisible(true);
         
@@ -35,7 +35,7 @@ public class ClientesBebidas extends javax.swing.JFrame {
             st=cn.createStatement();
             datos=st.executeQuery(sql);
             while (datos.next()) {
-                if(datos.getString("tipo").equals("Bebida")){
+                if(datos.getString("tipo").equals("Platillo")){
                     Menu plat=new Menu(datos.getInt("id"), datos.getString("tipo"), datos.getString("nombre"), datos.getDouble("precio"));
                     platilloVisual = new ItemMenu(plat);
                     panel.add(platilloVisual);
@@ -61,7 +61,7 @@ public class ClientesBebidas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Bebidas");
+        jLabel1.setText("Platillos");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
@@ -133,20 +133,23 @@ public class ClientesBebidas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClientesBebidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientesPlatillo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClientesBebidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientesPlatillo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClientesBebidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientesPlatillo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClientesBebidas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClientesPlatillo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClientesBebidas();
+                new ClientesPlatillo();
             }
         });
     }

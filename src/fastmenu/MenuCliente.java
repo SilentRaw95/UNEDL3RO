@@ -86,9 +86,19 @@ public class MenuCliente extends javax.swing.JFrame {
 
         goPlatillos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         goPlatillos.setText("Platillos");
+        goPlatillos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goPlatillosActionPerformed(evt);
+            }
+        });
 
         goPostres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         goPostres.setText("Postres");
+        goPostres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goPostresActionPerformed(evt);
+            }
+        });
 
         description.setColumns(20);
         description.setRows(5);
@@ -184,6 +194,9 @@ public class MenuCliente extends javax.swing.JFrame {
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         // TODO add your handling code here:
+        Inicio abrir = new Inicio();
+        abrir.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_cancelActionPerformed
 
     private void orderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderActionPerformed
@@ -209,7 +222,20 @@ public class MenuCliente extends javax.swing.JFrame {
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
+        System.out.println(lista_pedidos.getSelectedIndex());
     }//GEN-LAST:event_deleteActionPerformed
+
+    private void goPlatillosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goPlatillosActionPerformed
+        // TODO add your handling code here:
+        ClientesPlatillo abrir = new ClientesPlatillo();
+        abrir.setVisible(true);
+    }//GEN-LAST:event_goPlatillosActionPerformed
+
+    private void goPostresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goPostresActionPerformed
+        // TODO add your handling code here:
+        ClientesPostre abrir = new ClientesPostre();
+        abrir.setVisible(true);
+    }//GEN-LAST:event_goPostresActionPerformed
 
     /**
      * @param args the command line arguments
