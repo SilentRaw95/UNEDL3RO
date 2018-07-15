@@ -70,6 +70,10 @@ public class MenuCliente extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         lista_pedidos = new javax.swing.JList<>();
         delete = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        mesa = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -131,33 +135,52 @@ public class MenuCliente extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Descripcion");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("Mesa:");
+
+        mesa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setText("Comida");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(225, 225, 225))
             .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cancel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(delete)
-                        .addGap(105, 105, 105)
-                        .addComponent(order)
-                        .addGap(56, 56, 56))
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(cancel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(delete)
+                                .addGap(95, 95, 95)
+                                .addComponent(order))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(goBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                                .addGap(94, 94, 94)
                                 .addComponent(goPlatillos, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(83, 83, 83)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                                 .addComponent(goPostres, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(65, 65, 65))))
         );
@@ -165,22 +188,29 @@ public class MenuCliente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(mesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(goBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(goPlatillos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(goPostres, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancel)
-                    .addComponent(order)
-                    .addComponent(delete))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(delete)
+                    .addComponent(order))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -204,19 +234,35 @@ public class MenuCliente extends javax.swing.JFrame {
         if(orden.size() == 0){
             JOptionPane.showMessageDialog(null, "No puedes hacer, orden sin platillos");
         } else {
+            //chekin
+            String search = "SELECT * FROM pedidos";
             Statement st;
-            String desc = description.getText();
-            String ordenPadre = "INSERT INTO `pedidos` (`id`, `descripcion`) VALUES (NULL, '"+desc+"');";
-            //String sql = "INSERT INTO `pedidoslista` (`id`, `id_pedido`, `id_platillo`, `nombre`, `tipo`, `cantidad`, `total`) VALUES (NULL, '1', '1', 'obo', 'dsadas', '10', '10');";
+            ResultSet datos=null;
+            boolean exist = false;
             try{
-                pedidosEnBd++;
                 st=cn.createStatement();
-                st.execute(ordenPadre);
-                for (int i = 0; i < orden.size(); i++) {
-                    String sql = "INSERT INTO `pedidoslista` (`id`, `id_pedido`, `id_platillo`, `nombre`, `tipo`, `cantidad`, `total`) VALUES (NULL, '"+pedidosEnBd+"', '"+orden.get(i).getIdPlatillo()+"', '"+orden.get(i).getTipo()+"', '"+orden.get(i).getNombre()+"', '"+orden.get(i).getCantidad()+"', '"+orden.get(i).getTotal()+"');";
-                    st.execute(sql);
+                datos=st.executeQuery(search);
+                while (datos.next()) {
+                    if(mesa.getSelectedItem().equals(datos.getString("mesa"))){
+                        exist = true;
+                    }
                 }
             }catch(Exception e){ System.out.print(e.toString());}
+            //ingreso de datos
+            if(exist == true){
+                JOptionPane.showMessageDialog(null, "La orden de esta mesa ya existe");
+            } else {
+                //ingreso
+                String ordenPadre = "INSERT INTO `pedidos` (`id`, `mesa`, `descripcion`) VALUES (NULL, '"+mesa.getSelectedItem()+"', '"+description.getText()+"');";
+                try{
+                    st=cn.createStatement();
+                    st.execute(ordenPadre);
+                    for (int i = 0; i < orden.size(); i++) {
+                        String sql = "INSERT INTO `pedidoslista` (`id`, `id_pedido`, `id_platillo`, `nombre`, `tipo`, `cantidad`, `total`) VALUES (NULL, '"+mesa.getSelectedItem()+"', '"+orden.get(i).getIdPlatillo()+"', '"+orden.get(i).getTipo()+"', '"+orden.get(i).getNombre()+"', '"+orden.get(i).getCantidad()+"', '"+orden.get(i).getTotal()+"');";
+                        st.execute(sql);
+                    }
+                }catch(Exception e){ System.out.print(e.toString());}
+            }
         }
     }//GEN-LAST:event_orderActionPerformed
 
@@ -280,9 +326,13 @@ public class MenuCliente extends javax.swing.JFrame {
     private javax.swing.JButton goPlatillos;
     private javax.swing.JButton goPostres;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     static javax.swing.JList<String> lista_pedidos;
+    private javax.swing.JComboBox<String> mesa;
     private javax.swing.JButton order;
     // End of variables declaration//GEN-END:variables
     conectar mysql = new conectar();
