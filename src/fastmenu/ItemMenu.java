@@ -17,8 +17,8 @@ public class ItemMenu extends javax.swing.JPanel {
     /**
      * Creates new form ItemMenu
      */
-    MenuCliente variables = new MenuCliente();
-    DefaultListModel listModel = new DefaultListModel();
+    //MenuCliente variables = new MenuCliente();
+//    DefaultListModel listModel = new DefaultListModel();
     
     public Menu platillo;
     public ItemMenu(Menu p) {
@@ -28,6 +28,7 @@ public class ItemMenu extends javax.swing.JPanel {
         this.name.setText(p.getNombre());
         this.price.setText(""+p.getPrecio()+" $");
         setVisible(true);
+//        variables.setVisible(true);
     }
 
     /**
@@ -99,19 +100,19 @@ public class ItemMenu extends javax.swing.JPanel {
             Pedidoslista temp = new Pedidoslista(platillo.getId(), 0, platillo.getId(), null, null, 0, 0);
             //System.out.println(variables.orden.contains(temp));
             
-            if (variables.orden.contains(temp)) {
+            if (MenuCliente.orden.contains(temp)) {
                 //en caso de añadir un producto repetido
-                int posicion = variables.orden.indexOf(temp);
-                variables.removeList(posicion);
-                variables.orden.remove(posicion);
-                variables.orden.add(new Pedidoslista(platillo.getId(), 0, platillo.getId(), platillo.getTipo(), platillo.getNombre(), Integer.parseInt(cantidad.getText()), platillo.getPrecio()*Integer.parseInt(cantidad.getText()) ));
-                variables.ADDlista_pedidos("id: "+platillo.getId()+" "+platillo.getNombre()+" cantidad: "+cantidad.getText()+" precio total: "+platillo.getPrecio()*Integer.parseInt(cantidad.getText()) );
+                int posicion = MenuCliente.orden.indexOf(temp);
+                MenuCliente.removeList(posicion);
+                MenuCliente.orden.remove(posicion);
+                MenuCliente.orden.add(new Pedidoslista(platillo.getId(), 0, platillo.getId(), platillo.getTipo(), platillo.getNombre(), Integer.parseInt(cantidad.getText()), platillo.getPrecio()*Integer.parseInt(cantidad.getText()) ));
+                MenuCliente.ADDlista_pedidos("id: "+platillo.getId()+" "+platillo.getNombre()+" cantidad: "+cantidad.getText()+" precio total: "+platillo.getPrecio()*Integer.parseInt(cantidad.getText()) );
                 
                 cantidad.setText("");
             } else {
                 //en caso de que sea algo nnuevo
-                variables.orden.add(new Pedidoslista(platillo.getId(), 0, platillo.getId(), platillo.getTipo(), platillo.getNombre(), Integer.parseInt(cantidad.getText()), platillo.getPrecio()*Integer.parseInt(cantidad.getText()) ));
-                variables.ADDlista_pedidos("id: "+platillo.getId()+" "+platillo.getNombre()+" cantidad: "+cantidad.getText()+" precio total: "+platillo.getPrecio()*Integer.parseInt(cantidad.getText()) );
+                MenuCliente.orden.add(new Pedidoslista(platillo.getId(), 0, platillo.getId(), platillo.getTipo(), platillo.getNombre(), Integer.parseInt(cantidad.getText()), platillo.getPrecio()*Integer.parseInt(cantidad.getText()) ));
+                MenuCliente.ADDlista_pedidos("id: "+platillo.getId()+" "+platillo.getNombre()+" cantidad: "+cantidad.getText()+" precio total: "+platillo.getPrecio()*Integer.parseInt(cantidad.getText()) );
                 cantidad.setText("");
             }
         }

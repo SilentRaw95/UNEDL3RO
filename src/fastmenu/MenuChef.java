@@ -217,12 +217,19 @@ public class MenuChef extends javax.swing.JFrame {
                 st.executeUpdate(mysql);
                 
                 orderIndex.setSelectedIndex(0);
+                System.out.println(orderIndex.getItemCount());
                 for (int i = 0; i < orderIndex.getItemCount(); i++) {
                     if(i != 0){
                         orderIndex.removeItemAt(i);
                     }
                 }
                 listModel.removeAllElements();
+                //
+                String sql2 = "SELECT * FROM pedidos";
+                ResultSet datos=st.executeQuery(sql2);
+                while (datos.next()) {
+                    orderIndex.addItem(datos.getString("mesa"));
+                }
                 total.setText("");
             }catch(Exception e){ System.out.print(e.toString());}
         }
