@@ -21,7 +21,7 @@ public class MenuCliente extends javax.swing.JFrame {
     
     public static ArrayList<Pedidoslista> orden = new ArrayList<Pedidoslista>();
     public static DefaultListModel listModel = new DefaultListModel();
-    static double xd = 0;
+    static double totalOrder = 0;
     
     /**
      * Creates new form MenuCliente
@@ -33,20 +33,20 @@ public class MenuCliente extends javax.swing.JFrame {
     
     public static void ADDlista_pedidos(String element){
         listModel.addElement(element);
-        double thot = 0;
+        double getTotal = 0;
         for (int i = 0; i < orden.size(); i++) {
-            thot = thot + orden.get(i).getTotal();
+            getTotal = getTotal + orden.get(i).getTotal();
         }
-        xd = thot;
+        totalOrder = getTotal;
     }
     
     public static void removeList(int pos){
         listModel.removeElementAt(pos);
-        double thot = 0;
+        double getTotal = 0;
         for (int i = 0; i < orden.size(); i++) {
-            thot = thot + orden.get(i).getTotal();
+            getTotal = getTotal + orden.get(i).getTotal();
         }
-        xd = thot;
+        totalOrder = getTotal;
     }
 
     /**
@@ -239,7 +239,7 @@ public class MenuCliente extends javax.swing.JFrame {
         if(orden.size() == 0){
             JOptionPane.showMessageDialog(null, "No puedes hacer, orden sin platillos");
         } else {
-            //chekin
+            //chekin de mesa
             String search = "SELECT * FROM pedidos";
             Statement st;
             ResultSet datos=null;
@@ -253,14 +253,14 @@ public class MenuCliente extends javax.swing.JFrame {
                     }
                 }
             }catch(Exception e){ System.out.print(e.toString());}
-            //ingreso de datos
+            //verifica si la mesa existe
             if(exist == true){
                 JOptionPane.showMessageDialog(null, "La orden de esta mesa ya existe");
             } else {
-                //ingreso
+                //ingresa la orden en la bd
                 String ordenPadre = "INSERT INTO `pedidos` (`id`, `mesa`, `descripcion`) VALUES (NULL, '"+mesa.getSelectedItem()+"', '"+description.getText()+"');";
                 try{
-                    JOptionPane.showMessageDialog(null, "Es un total de: "+xd);
+                    JOptionPane.showMessageDialog(null, "Es un total de: "+totalOrder);
                     st=cn.createStatement();
                     st.execute(ordenPadre);
                     for (int i = 0; i < orden.size(); i++) {
@@ -278,14 +278,14 @@ public class MenuCliente extends javax.swing.JFrame {
     
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
-        if(lista_pedidos.getSelectedIndex() != 0){
+        if(lista_pedidos.getSelectedIndex() != -1){
             orden.remove(lista_pedidos.getSelectedIndex());
             listModel.removeElementAt(lista_pedidos.getSelectedIndex());
-            double thot = 0;
+            double getTotal = 0;
             for (int i = 0; i < orden.size(); i++) {
-                thot = thot + orden.get(i).getTotal();
+                getTotal = getTotal + orden.get(i).getTotal();
             }
-            xd = thot;
+            totalOrder = getTotal;
         }
     }//GEN-LAST:event_deleteActionPerformed
 
