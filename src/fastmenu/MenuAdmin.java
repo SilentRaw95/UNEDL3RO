@@ -18,6 +18,7 @@ public class MenuAdmin extends javax.swing.JFrame {
      */
     public MenuAdmin() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -29,68 +30,51 @@ public class MenuAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         Salir = new javax.swing.JButton();
         Platillos = new javax.swing.JButton();
         Chefs = new javax.swing.JButton();
+        MenuAdministrador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(700, 600));
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Admin");
-
-        Salir.setText("SALIR");
+        Salir.setBackground(new java.awt.Color(255, 0, 0));
+        Salir.setFont(new java.awt.Font("Adobe Caslon Pro Bold", 0, 18)); // NOI18N
+        Salir.setForeground(new java.awt.Color(255, 255, 255));
+        Salir.setText("Cerrar");
         Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SalirActionPerformed(evt);
             }
         });
+        getContentPane().add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, -1, -1));
 
+        Platillos.setBackground(new java.awt.Color(0, 0, 0));
+        Platillos.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        Platillos.setForeground(new java.awt.Color(255, 255, 255));
         Platillos.setText("Platillos");
         Platillos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PlatillosActionPerformed(evt);
             }
         });
+        getContentPane().add(Platillos, new org.netbeans.lib.awtextra.AbsoluteConstraints(121, 160, 100, -1));
 
+        Chefs.setBackground(new java.awt.Color(0, 0, 0));
+        Chefs.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        Chefs.setForeground(new java.awt.Color(255, 255, 255));
         Chefs.setText("Chefs");
         Chefs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ChefsActionPerformed(evt);
             }
         });
+        getContentPane().add(Chefs, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 100, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(Salir))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(Platillos)
-                        .addGap(192, 192, 192)
-                        .addComponent(Chefs)))
-                .addContainerGap(50, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Platillos)
-                    .addComponent(Chefs))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(Salir)
-                .addGap(51, 51, 51))
-        );
+        MenuAdministrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Manu Administrador.jpg"))); // NOI18N
+        getContentPane().add(MenuAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -157,8 +141,8 @@ public class MenuAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Chefs;
+    private javax.swing.JLabel MenuAdministrador;
     private javax.swing.JButton Platillos;
     private javax.swing.JButton Salir;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

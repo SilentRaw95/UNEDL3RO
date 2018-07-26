@@ -49,8 +49,11 @@ public class AdminChefs extends JPanel {
         refreshButton = new javax.swing.JButton();
         newButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
+        AdminChefs = new javax.swing.JLabel();
 
         FormListener formListener = new FormListener();
+
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, list, masterTable);
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${user}"));
@@ -65,9 +68,17 @@ public class AdminChefs extends JPanel {
         jTableBinding.bind();
         masterScrollPane.setViewportView(masterTable);
 
-        userLabel.setText("Usuario:");
+        add(masterScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 560, 210));
 
+        userLabel.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        userLabel.setForeground(new java.awt.Color(255, 255, 255));
+        userLabel.setText("Usuario:");
+        add(userLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, -1, -1));
+
+        passwordLabel.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        passwordLabel.setForeground(new java.awt.Color(255, 255, 255));
         passwordLabel.setText("Contraseña:");
+        add(passwordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 100, -1));
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.user}"), userField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         binding.setSourceUnreadableValue("null");
@@ -75,80 +86,50 @@ public class AdminChefs extends JPanel {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), userField, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
+        add(userField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 460, -1));
+
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.password}"), passwordField, org.jdesktop.beansbinding.BeanProperty.create("text"));
         binding.setSourceUnreadableValue("null");
         bindingGroup.addBinding(binding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), passwordField, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
+        add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 460, -1));
+
+        saveButton.setBackground(new java.awt.Color(0, 0, 0));
+        saveButton.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        saveButton.setForeground(new java.awt.Color(255, 255, 255));
         saveButton.setText("Guardar");
         saveButton.addActionListener(formListener);
+        add(saveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 550, 100, -1));
 
+        refreshButton.setBackground(new java.awt.Color(0, 0, 0));
+        refreshButton.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        refreshButton.setForeground(new java.awt.Color(255, 255, 255));
         refreshButton.setText("Recargar");
         refreshButton.addActionListener(formListener);
+        add(refreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 550, -1, -1));
 
+        newButton.setBackground(new java.awt.Color(0, 0, 0));
+        newButton.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        newButton.setForeground(new java.awt.Color(255, 255, 255));
         newButton.setText("Nuevo");
         newButton.addActionListener(formListener);
+        add(newButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 90, -1));
 
+        deleteButton.setBackground(new java.awt.Color(0, 0, 0));
+        deleteButton.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        deleteButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteButton.setText("Borrar");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, masterTable, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), deleteButton, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
         deleteButton.addActionListener(formListener);
+        add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, 90, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(newButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(refreshButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(saveButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(userLabel)
-                                    .addComponent(passwordLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(userField, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                                    .addComponent(passwordField)))
-                            .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE))))
-                .addContainerGap())
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {deleteButton, newButton, refreshButton, saveButton});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userLabel)
-                    .addComponent(userField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordLabel)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveButton)
-                    .addComponent(refreshButton)
-                    .addComponent(deleteButton)
-                    .addComponent(newButton))
-                .addContainerGap())
-        );
+        AdminChefs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Administrador Chefs.jpg"))); // NOI18N
+        add(AdminChefs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         bindingGroup.bind();
     }
@@ -224,6 +205,7 @@ public class AdminChefs extends JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AdminChefs;
     private javax.swing.JButton deleteButton;
     private javax.persistence.EntityManager entityManager;
     private java.util.List<fastmenu.Usuarios> list;

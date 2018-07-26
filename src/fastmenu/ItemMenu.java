@@ -45,6 +45,8 @@ public class ItemMenu extends javax.swing.JPanel {
         name = new javax.swing.JLabel();
         cantidad = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(141, 84, 60));
+
         add.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         add.setText("+");
         add.addActionListener(new java.awt.event.ActionListener() {

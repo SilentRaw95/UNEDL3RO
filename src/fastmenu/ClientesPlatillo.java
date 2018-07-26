@@ -23,6 +23,7 @@ public class ClientesPlatillo extends javax.swing.JFrame {
      */
     public ClientesPlatillo() {
         initComponents();
+        this.setLocationRelativeTo(null);
         setVisible(true);
         
         //obtener platillos
@@ -57,52 +58,38 @@ public class ClientesPlatillo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         panel = new javax.swing.JPanel();
         close = new javax.swing.JButton();
+        ClientePlatillos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Platillos");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
             }
         });
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, -1));
 
-        panel.setBackground(new java.awt.Color(204, 255, 204));
+        panel.setBackground(new java.awt.Color(0, 51, 51));
+        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 620, 330));
 
-        close.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        close.setBackground(new java.awt.Color(0, 0, 0));
+        close.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        close.setForeground(new java.awt.Color(255, 255, 255));
         close.setText("Cerrar Modal");
         close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 closeActionPerformed(evt);
             }
         });
+        getContentPane().add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, -1, 25));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(close)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        ClientePlatillos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo Cliente Platillo.jpg"))); // NOI18N
+        getContentPane().add(ClientePlatillos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -155,6 +142,7 @@ public class ClientesPlatillo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ClientePlatillos;
     private javax.swing.JButton close;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panel;

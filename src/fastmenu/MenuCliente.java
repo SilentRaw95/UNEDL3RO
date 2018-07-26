@@ -28,6 +28,7 @@ public class MenuCliente extends javax.swing.JFrame {
      */
     public MenuCliente() {
         initComponents();
+        this.setLocationRelativeTo(null);
         lista_pedidos.setModel(listModel);
     }
     
@@ -58,7 +59,6 @@ public class MenuCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         goBebidas = new javax.swing.JButton();
         goPlatillos = new javax.swing.JButton();
         goPostres = new javax.swing.JButton();
@@ -73,55 +73,72 @@ public class MenuCliente extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         mesa = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
+        MenuCliente = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Menu cliente");
-
-        goBebidas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        goBebidas.setBackground(new java.awt.Color(0, 0, 0));
+        goBebidas.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        goBebidas.setForeground(new java.awt.Color(255, 255, 255));
         goBebidas.setText("Bebida");
         goBebidas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goBebidasActionPerformed(evt);
             }
         });
+        getContentPane().add(goBebidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 95, 70));
 
-        goPlatillos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        goPlatillos.setBackground(new java.awt.Color(0, 0, 0));
+        goPlatillos.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        goPlatillos.setForeground(new java.awt.Color(255, 255, 255));
         goPlatillos.setText("Platillos");
         goPlatillos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goPlatillosActionPerformed(evt);
             }
         });
+        getContentPane().add(goPlatillos, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, 95, 70));
 
-        goPostres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        goPostres.setBackground(new java.awt.Color(0, 0, 0));
+        goPostres.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        goPostres.setForeground(new java.awt.Color(255, 255, 255));
         goPostres.setText("Postres");
         goPostres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goPostresActionPerformed(evt);
             }
         });
+        getContentPane().add(goPostres, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 95, 70));
 
         description.setColumns(20);
         description.setRows(5);
         jScrollPane1.setViewportView(description);
 
-        cancel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 480, 100));
+
+        cancel.setBackground(new java.awt.Color(0, 0, 0));
+        cancel.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        cancel.setForeground(new java.awt.Color(255, 255, 255));
         cancel.setText("Cancelar");
         cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelActionPerformed(evt);
             }
         });
+        getContentPane().add(cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, -1, -1));
 
-        order.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        order.setBackground(new java.awt.Color(0, 0, 0));
+        order.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        order.setForeground(new java.awt.Color(255, 255, 255));
         order.setText("Ordenar");
         order.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orderActionPerformed(evt);
             }
         });
+        getContentPane().add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 530, -1, -1));
 
         lista_pedidos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         lista_pedidos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -131,92 +148,43 @@ public class MenuCliente extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(lista_pedidos);
 
-        delete.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 480, 90));
+
+        delete.setBackground(new java.awt.Color(0, 0, 0));
+        delete.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
+        delete.setForeground(new java.awt.Color(255, 255, 255));
         delete.setText("Borrar");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteActionPerformed(evt);
             }
         });
+        getContentPane().add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Descripcion");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Descripción");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 120, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Mesa:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
-        mesa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mesa.setBackground(new java.awt.Color(153, 153, 153));
+        mesa.setFont(new java.awt.Font("Rockwell", 0, 14)); // NOI18N
+        mesa.setForeground(new java.awt.Color(255, 255, 255));
         mesa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
+        getContentPane().add(mesa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 60, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Comida");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 80, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(cancel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(delete)
-                                .addGap(95, 95, 95)
-                                .addComponent(order))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(goBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(94, 94, 94)
-                                        .addComponent(goPlatillos, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                                .addComponent(goPostres, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(65, 65, 65))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(mesa, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(61, 61, 61))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(mesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(goBebidas, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goPlatillos, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(goPostres, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cancel)
-                    .addComponent(delete)
-                    .addComponent(order))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        MenuCliente.setForeground(new java.awt.Color(0, 0, 0));
+        MenuCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo cliente.jpg"))); // NOI18N
+        getContentPane().add(MenuCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -341,13 +309,13 @@ public class MenuCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel MenuCliente;
     private javax.swing.JButton cancel;
     private javax.swing.JButton delete;
     private javax.swing.JTextArea description;
     private javax.swing.JButton goBebidas;
     private javax.swing.JButton goPlatillos;
     private javax.swing.JButton goPostres;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
